@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 
 
 class SignIn(Base):
-    # sign_in_url='https://soft.reelly.io/sign-in'
     USERNAME_FIELD=(By.CSS_SELECTOR, "input[placeholder='Email']")
     PASSWORD_FIELD=(By.CSS_SELECTOR, "input[placeholder='Password']")
     CONTINUE_BUTTON=(By.CSS_SELECTOR, "a[wized='loginButton']")

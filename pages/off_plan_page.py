@@ -11,14 +11,15 @@ class OffPlanPage(Base):
     def click_first_listing(self):
         self.click_element(self.FIRST_LISTING)
 
-    def check_visualization_architecture(self, text):
-        self.verify_text(text, self.VISUALIZATION_OPTION_ARCHITECTURE)
-        self.verify_clickable(self.VISUALIZATION_OPTION_ARCHITECTURE)
+    def check_visualization_option(self,text):
+        if text=='Architecture':
+            locator=self.VISUALIZATION_OPTION_ARCHITECTURE
+        elif text=='Interior':
+            locator=self.VISUALIZATION_OPTION_INTERIOR
+        elif text=='Lobby':
+            locator=self.VISUALIZATION_OPTION_LOBBY
+        else:
+            return
 
-    def check_visualization_interior(self, text):
-        self.verify_text(text, self.VISUALIZATION_OPTION_INTERIOR)
-        self.verify_clickable(self.VISUALIZATION_OPTION_INTERIOR)
-
-    def check_visualization_lobby(self, text):
-        self.verify_text(text, self.VISUALIZATION_OPTION_LOBBY)
-        self.verify_clickable(self.VISUALIZATION_OPTION_LOBBY)
+        self.verify_text(text, locator)
+        self.verify_clickable(locator)
