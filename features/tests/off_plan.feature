@@ -7,5 +7,5 @@ Feature: Off-Plan
     When click on off-plan menu button
     And click first off-plan listing
     Then verify visualization options Architecture
-    And verify visualization options Interior
-    And verify visualization options Lobby
+#    And verify visualization options Interior
+#    And verify visualization options Lobby

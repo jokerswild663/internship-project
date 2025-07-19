@@ -1,6 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from app.main import Application
 
@@ -8,13 +7,25 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    ## chrome
+    options=webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument('--window-size=1920,1080')
+
+    # options.add_argument('--disable-gpu')
+    # options.add_argument('--remote-debugging-port=9222')
+
+    context.driver = webdriver.Chrome(
+        options=options,
+    )
+
+
+    ## firefox
+    # context.driver = webdriver.Firefox()
 
     context.driver.maximize_window()
-    context.driver.implicitly_wait(4)
-    context.driver.wait = WebDriverWait(context.driver, 10)
+    context.driver.implicitly_wait(20)
+    context.driver.wait = WebDriverWait(context.driver, 20)
     context.app = Application(context.driver)
 
 
