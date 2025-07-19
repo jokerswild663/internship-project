@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 class OffPlanPage(Base):
-    FIRST_LISTING = (By.CSS_SELECTOR, "div[class*='overflow-auto'] img[alt='Property Image']")
+    # FIRST_LISTING = (By.CSS_SELECTOR, "div[class*='overflow-auto'] img[alt='Property Image']")
+    FIRST_LISTING = (By.CSS_SELECTOR, "a[class='outline-none']")
     VISUALIZATION_OPTION_ARCHITECTURE = (By.CSS_SELECTOR, "a.tab[data-w-tab='Tab 1']")
     VISUALIZATION_OPTION_INTERIOR = (By.CSS_SELECTOR, "a.tab[data-w-tab='Tab 2']")
     VISUALIZATION_OPTION_LOBBY = (By.CSS_SELECTOR, "a.tab[data-w-tab='Tab 3']")
