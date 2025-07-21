@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 class MainPage(Base):
-    MENU_BUTTON_OFF_PLAN=(By.CSS_SELECTOR, "a.menu-button-block[wized='newOffPlanLink']")
+    MENU_BUTTON_OFF_PLAN=(By.CSS_SELECTOR, "a[wized='newOffPlanLink'] div[class='g-menu-text']")
 
     def click_off_plan(self):
         sleep(5)
