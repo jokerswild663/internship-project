@@ -4,6 +4,7 @@ from behave import given, when, then, step
 def click_first_off_plan_listing(context):
     context.app.off_plan_page.click_first_listing()
 
-@then("verify visualization options {option}")
-def verify_visualization_options_text(context,option):
-    context.app.off_plan_page.check_visualization_option(option)
+@then("verify visualization options")
+def verify_visualization_options_text(context):
+    options = ['Architecture','Interior','Lobby']
+    context.app.off_plan_page.verify_visualization_options(options)

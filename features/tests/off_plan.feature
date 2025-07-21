@@ -6,6 +6,5 @@ Feature: Off-Plan
     Given open reelly https://soft.reelly.io/sign-in
     When click on off-plan menu button
     And click first off-plan listing
-    Then verify visualization options Architecture
-#    And verify visualization options Interior
-#    And verify visualization options Lobby
+    Then verify visualization options
+    Then verify visualization options
