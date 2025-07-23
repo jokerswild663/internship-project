@@ -7,4 +7,3 @@ Feature: Off-Plan
     When click on off-plan menu button
     And click first off-plan listing
     Then verify visualization options
-    Then verify visualization options
