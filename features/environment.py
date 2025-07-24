@@ -1,9 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 from app.main import Application
 
-def browser_init(context):
+def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
@@ -28,7 +29,25 @@ def browser_init(context):
 
 
     ## firefox
-    context.driver = webdriver.Firefox()
+    # context.driver = webdriver.Firefox()
+
+    ## Browserstack
+    bs_user = ''
+    bs_access = ''
+    url = f'http://{bs_user}:{bs_access}@hub-cloud.browserstack.com/wd/hub'
+    options = Options()
+    options.add_experimental_option("prefs", { "profile.default_content_setting_values.notifications": 0})
+    bstack_options = {
+        "os": "OS X",
+        "osVersion": "Monterey",
+        "browserName": "Firefox",
+        # "browserName": "Chrome",
+        # "browserName": "Edge",
+        # "browserName": "Safari",
+        "sessionName": scenario_name,
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(20)
@@ -38,7 +57,7 @@ def browser_init(context):
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
-    browser_init(context)
+    browser_init(context, scenario.name)
 
 
 def before_step(context, step):
