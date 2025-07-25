@@ -9,7 +9,7 @@ def browser_init(context, scenario_name):
     :param context: Behave context
     """
     ## chrome
-    # options=webdriver.ChromeOptions()
+    options=webdriver.ChromeOptions()
     # options.add_argument('--headless=new')
     # options.add_argument('--window-size=1920,1080')
     # options.add_argument('--no-sandbox')
@@ -23,31 +23,31 @@ def browser_init(context, scenario_name):
     # options.add_experimental_option('useAutomationExtension', False)    # options.add_argument('--remote-debugging-port=9222')
     # options.add_argument('--remote-debugging-port=9222')
     #
-    # context.driver = webdriver.Chrome(
-    #     options=options,
-    # )
+    context.driver = webdriver.Chrome(
+        options=options
+    )
 
 
     ## firefox
     # context.driver = webdriver.Firefox()
 
     ## Browserstack
-    bs_user = ''
-    bs_access = ''
-    url = f'http://{bs_user}:{bs_access}@hub-cloud.browserstack.com/wd/hub'
-    options = Options()
-    options.add_experimental_option("prefs", { "profile.default_content_setting_values.notifications": 0})
-    bstack_options = {
-        "os": "OS X",
-        "osVersion": "Monterey",
-        "browserName": "Firefox",
-        # "browserName": "Chrome",
-        # "browserName": "Edge",
-        # "browserName": "Safari",
-        "sessionName": scenario_name,
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # bs_user = ''
+    # bs_access = ''
+    # url = f'http://{bs_user}:{bs_access}@hub-cloud.browserstack.com/wd/hub'
+    # options = Options()
+    # options.add_experimental_option("prefs", { "profile.default_content_setting_values.notifications": 0})
+    # bstack_options = {
+    #     "os": "OS X",
+    #     "osVersion": "Monterey",
+    #     "browserName": "Firefox",
+    #     # "browserName": "Chrome",
+    #     # "browserName": "Edge",
+    #     # "browserName": "Safari",
+    #     "sessionName": scenario_name,
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(20)
