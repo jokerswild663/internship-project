@@ -18,6 +18,6 @@ class SignIn(Base):
         self.open_page(site)
 
     def sign_in(self):
-        self.input_field(self.USERNAME_FIELD, "")
-        self.input_field(self.PASSWORD_FIELD, "")
+        self.input_field(self.USERNAME_FIELD, self.USERNAME)
+        self.input_field(self.PASSWORD_FIELD, self.PASSWORD)
         self.click_element(self.CONTINUE_BUTTON)

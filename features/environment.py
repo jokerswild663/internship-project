@@ -9,6 +9,10 @@ def browser_init(context, scenario_name):
     :param context: Behave context
     """
     ## chrome
+    mobile_emulation = {
+        "deviceMetrics": {"width": 360, "height": 640, "pixelRatio": 3.0},
+        "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
+        "clientHints": {"platform": "Android", "mobile": True}}
     options=webdriver.ChromeOptions()
     # options.add_argument('--headless=new')
     # options.add_argument('--window-size=1920,1080')
@@ -22,6 +26,8 @@ def browser_init(context, scenario_name):
     # options.add_experimental_option("excludeSwitches", ["enable-automation"])
     # options.add_experimental_option('useAutomationExtension', False)    # options.add_argument('--remote-debugging-port=9222')
     # options.add_argument('--remote-debugging-port=9222')
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+    desired_capabilities = options.to_capabilities()
     #
     context.driver = webdriver.Chrome(
         options=options
