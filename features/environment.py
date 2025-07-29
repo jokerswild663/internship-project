@@ -9,29 +9,29 @@ def browser_init(context, scenario_name):
     :param context: Behave context
     """
     ## chrome
-    mobile_emulation = {
-        "deviceMetrics": {"width": 360, "height": 640, "pixelRatio": 3.0},
-        "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
-        "clientHints": {"platform": "Android", "mobile": True}}
-    options=webdriver.ChromeOptions()
-    # options.add_argument('--headless=new')
-    # options.add_argument('--window-size=1920,1080')
-    # options.add_argument('--no-sandbox')
-    # options.add_argument('--disable-dev-shm-usage')
-    # options.add_argument('--disable-gpu')
-    # options.add_argument('--disable-web-security')
-    # options.add_argument('--allow-running-insecure-content')
-    # options.add_argument('--disable-blink-features=AutomationControlled')
-    # options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36")
-    # options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    # options.add_experimental_option('useAutomationExtension', False)    # options.add_argument('--remote-debugging-port=9222')
-    # options.add_argument('--remote-debugging-port=9222')
-    options.add_experimental_option("mobileEmulation", mobile_emulation)
-    desired_capabilities = options.to_capabilities()
-    #
-    context.driver = webdriver.Chrome(
-        options=options
-    )
+    # mobile_emulation = {
+    #     "deviceMetrics": {"width": 360, "height": 640, "pixelRatio": 3.0},
+    #     "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
+    #     "clientHints": {"platform": "Android", "mobile": True}}
+    # options=webdriver.ChromeOptions()
+    # # options.add_argument('--headless=new')
+    # # options.add_argument('--window-size=1920,1080')
+    # # options.add_argument('--no-sandbox')
+    # # options.add_argument('--disable-dev-shm-usage')
+    # # options.add_argument('--disable-gpu')
+    # # options.add_argument('--disable-web-security')
+    # # options.add_argument('--allow-running-insecure-content')
+    # # options.add_argument('--disable-blink-features=AutomationControlled')
+    # # options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36")
+    # # options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    # # options.add_experimental_option('useAutomationExtension', False)    # options.add_argument('--remote-debugging-port=9222')
+    # # options.add_argument('--remote-debugging-port=9222')
+    # options.add_experimental_option("mobileEmulation", mobile_emulation)
+    # desired_capabilities = options.to_capabilities()
+    # #
+    # context.driver = webdriver.Chrome(
+    #     options=options
+    # )
 
 
     ## firefox
@@ -44,18 +44,16 @@ def browser_init(context, scenario_name):
     # options = Options()
     # options.add_experimental_option("prefs", { "profile.default_content_setting_values.notifications": 0})
     # bstack_options = {
-    #     "os": "OS X",
-    #     "osVersion": "Monterey",
-    #     "browserName": "Firefox",
-    #     # "browserName": "Chrome",
-    #     # "browserName": "Edge",
-    #     # "browserName": "Safari",
+    #     "deviceName": "Google Pixel 7",
+    #     "osVersion": "13.0",
+    #     "browserName": "chrome",
+    #     "deviceOrientation": "portrait",
     #     "sessionName": scenario_name,
     # }
     # options.set_capability('bstack:options', bstack_options)
     # context.driver = webdriver.Remote(command_executor=url, options=options)
 
-    context.driver.maximize_window()
+    # context.driver.maximize_window()
     context.driver.implicitly_wait(20)
     context.driver.wait = WebDriverWait(context.driver, 20)
     context.app = Application(context.driver)
